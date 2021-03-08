@@ -1,0 +1,76 @@
+<html>
+
+    <head>
+        <title>Home</title>
+        <style type="text/css">
+            .albums-div {
+                float: left;
+                width : 45%;
+                border-right: 1px solid rgb(92, 89, 89);
+            }
+            .artists-div {
+                float: left;
+                margin-top : -25px;
+                margin-left : 10px;
+            }
+            .headings {
+                margin-left: 10px;
+                font-family : Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .album-div {
+                margin : 20px 0px;
+            }
+            p {
+                color:hsl(167, 100%, 51%);
+                font-style : oblique;
+                margin-left: 10px;
+            }
+            .artist-anchor {
+                color :hsl(167, 100%, 51%);
+                text-decoration: none;
+            }
+            .album-anchor {
+                font-weight: bold;
+                color :hsl(167, 100%, 51%);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <%- include('./navbar.ejs'); %>
+
+        <br/>
+        <div class="albums-div">
+            <h3 class="headings">Recently added albums</h3>
+            <% if(albums.length == 0) { %>
+                <p>No albums added yet !</p>
+            <% } %>
+            <% for( var i=0; i<albums.length; i++ ) { %>
+                <div class="album-div">
+                    <p>
+                        <a class="album-anchor" href="/albums/<%=albums[i]._id%>"><%=albums[i].name%> by <%=albums[i].artist%></a>
+                    </p>
+                    <p><%=albums[i].release_date.toISOString().split('T')[0].split('-')[0]%></p>
+                </div>
+            <% } %>
+        </div>        
+
+        <br/>
+
+        <div class="artists-div">
+            <h3 class="headings">Recently added artists</h3>
+            <% if(artists.length == 0) { %>
+                <p>No artists added yet !</p>
+            <% } %>
+            <% for( var i=0; i<artists.length; i++ ) { %>
+                <p>
+                    <a class="artist-anchor" href="/artists/<%=artists[i]._id%>"><p><%=artists[i].name%></p></a>
+                </p>
+            <% } %>
+        </div>
+        
+
+    </body>
+</html>

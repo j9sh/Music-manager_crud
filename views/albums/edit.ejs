@@ -1,0 +1,38 @@
+<html>
+    <head>
+
+        <style type="text/css">
+            body {
+                text-align : center
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div>
+            <% if (locals.errorMsg != null) { %>
+                <p><%=errorMsg%></p>
+            <% } %>
+        </div>
+
+        <h2>Update Album Entry</h2>
+
+        <form method="POST" action="/albums/<%=album[0]._id%>">
+            <p>Album Name : </p>
+            <input type="text" name="name" value="<%=album[0].name%>">
+            <p>Artist Name : </p>
+            <input type="text" name="artist" value="<%=album[0].artist%>">
+            <p>Genre : </p>
+            <input type="text" name="genre" value="<%=album[0].genre%>">
+            <p>No. of Songs : </p>
+            <input type="number" name="no_of_songs" value="<%=album[0].no_of_songs%>">
+            <p>Release Date : </p>
+            <input type="date" name="release_date" value="<%=album[0].release_date.toISOString().split('T')[0]%>">
+            <p><button type="submit">Update</button></p>
+            <a href="/albums">Cancel</a>
+        </form>
+    
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+
+        <div>
+            <% if (locals.errorMsg != null) { %>
+                <p><%=errorMsg%></p>
+            <% } %>
+        </div>
+        
+        <form method="POST" action="/artists/<%=artist[0]._id%>">
+            <p>Artist Name : </p>
+            <input type="text" name="name" value="<%=artist[0].name%>">
+            <p>Label Name : </p>
+            <input type="text" name="label" value="<%=artist[0].label%>">
+            <p>No of Albums : </p>
+            <input type="number" name="no_of_albums" value="<%=artist[0].no_of_albums%>">
+            <p><button type="submit">Update</button></p>
+        </form>
+    
+    </body>
+</html>

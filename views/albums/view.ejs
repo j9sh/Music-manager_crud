@@ -1,0 +1,32 @@
+<html>
+
+    <head>
+        <style type="text/css">
+            .album-div {
+                font-family : Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .album-div label {
+                width : 150px;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <%- include('../navbar.ejs'); %>
+
+        <% if (locals.errorMsg != null) { %>
+            <%=errorMsg%>
+        <% } %>
+
+        <div class="album-div">
+            <h2><%=album[0].name%></h2>
+            <p><label>Genre</label><%=album[0].genre%></p>
+            <p><label>Artist</label><%=album[0].artist%></p>
+            <p><label>No of Songs</label><%=album[0].no_of_songs%></p>
+            <p><label>Release Date</label><%=album[0].release_date.toISOString().split('T')[0]%></p>
+        </div>
+
+    </body>
+
+</html>

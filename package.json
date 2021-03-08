@@ -1,0 +1,20 @@
+{
+  "name": "music-manager",
+  "version": "1.0.0",
+  "description": "Music Management System using Node.js, Express and EJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "nodemon": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "j9sh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.19"
+  }
+}

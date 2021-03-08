@@ -1,0 +1,97 @@
+<html>
+
+    <head>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        
+        <style type="text/css">
+        
+            .album-div .album-label {
+                width : 200px;
+            }
+            .album-div .date-label {
+                width : 50px;
+                margin-right : 50px
+            }
+            .album-div {
+                margin-left : 10px;
+            }
+            .heading {
+                margin-left : 10px;
+            }
+            .album-div a {
+                text-decoration: none;
+                color : hsl(167, 100%, 51%);
+            }
+            .album-div p {
+                color:hsl(167, 100%, 51%);
+                font-style : oblique;
+            }
+            .edit-btn a {
+                color:white;
+            }
+            button:hover {
+                color : black;
+            }
+            .edit-btn a:hover {
+                color : black;
+            }
+            .addnew-btn a{
+                color : white;
+                text-decoration: none;
+            }
+            .addnew-btn a:hover {
+                color:black;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        
+        <%- include('../navbar.ejs'); %>
+
+        <div>
+            <% if (locals.errorMsg != null) { %>
+                <p><%=errorMsg%></p>
+            <% } %>
+        </div>
+        
+        <h2 class="heading">All Albums</h2>
+        
+        <div class="album-div">
+            <% if(albums.length == 0) { %>
+                <p>No albums added yet !</p>
+            <% } %>
+            <% for( var i=0; i<albums.length; i++ ) { %>
+                <p>
+                    <label class="album-label">
+                        <a href="/albums/<%=albums[i]._id%>"><strong><%=albums[i].name%></strong></a>
+                    </label>
+                    <label class="date-label">
+                        <%=albums[i].release_date.toISOString().split('T')[0].split('-')[0]%>
+                    </label>
+                    <button class="delete-btn" id="<%=albums[i]._id%>">Delete</button>
+                    <button class="edit-btn"><a href="/albums/edit/<%=albums[i]._id%>" id="<%=albums[i]._id%>">Edit</a></button>
+                </p>
+            <% } %>
+        </div>
+        
+        <button class="addnew-btn"><a href="/albums/new">Add new</a></button>
+
+        <script type="text/javascript">
+            $(".delete-btn").click(function() {
+                $.ajax({
+                    type : 'DELETE',
+                    url : '/albums/' + this.id,
+                    success : function(data) {
+                        location.reload();
+                    }
+                });
+            });
+        </script>
+    
+    </body>
+
+</html>

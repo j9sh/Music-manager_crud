@@ -1,0 +1,35 @@
+<html>
+
+    <head>
+        <style type="text/css">
+            .artist-div {
+                font-family : Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .artist-div label {
+                width : 150px;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <%- include('../navbar.ejs'); %>
+
+        <% if (locals.errorMsg != null) { %>
+            <%=errorMsg%>
+        <% } %>
+
+        <div class="artist-div">
+            <h2><%=artist[0].name%></h2>
+            <p><label>Label</label><%=artist[0].label%></p>
+            <p><label>No of Albums</label><%=artist[0].no_of_albums%></p>
+            <% if (artist[0].solo == "Yes") { %>
+                <p>Solo Artist</p>
+            <% } else { %>
+                <p>Group Artist</p>
+            <% } %>
+        </div>
+
+    </body>
+
+</html>

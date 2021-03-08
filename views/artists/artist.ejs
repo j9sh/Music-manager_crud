@@ -1,0 +1,85 @@
+<html>
+    
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <style type="text/css">
+            .all-artists {
+                margin : 10px;
+            }
+            .all-artists a {
+                text-decoration: none;
+                color : hsl(167, 100%, 51%);
+            }
+            .all-artists label {
+                width : 150px;
+                font-weight : bold;
+            }
+            .all-artists p {
+                color:hsl(167, 100%, 51%);
+                font-style : oblique;
+            }
+            .heading {
+                margin-left : 10px;
+            }
+            .edit-btn a {
+                color : white;
+            }
+            .edit-btn a:hover {
+                color : black;
+            }
+            .delete-btn:hover {
+                color:black;
+            }
+            .addnew-btn a{
+                color : white;
+                text-decoration: none;
+            }
+            .addnew-btn a:hover {
+                color:black;
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <div>
+            <% if (locals.errorMsg != null) { %>
+                <p><%=errorMsg%></p>
+            <% } %>
+        </div>
+
+        <%- include('../navbar.ejs'); %>
+
+        <h2 class="heading">All Artists</h2>
+        
+        <div class="all-artists">
+            <% if(artists.length == 0) { %>
+                <p>No artists added yet !</p>
+            <% } %>
+            <% for( var i=0; i<artists.length; i++ ) { %>
+                <p>
+                    <label><a href="/artists/<%=artists[i]._id%>"><%=artists[i].name%></a></label>
+                    <button class="delete-btn" id="<%=artists[i]._id%>">Delete</button>
+                    <button class="edit-btn"><a href="/artists/edit/<%=artists[i]._id%>" id="<%=artists[i]._id%>">Edit</a></button>
+                </p>
+            <% } %>
+            </div>
+        <button class="addnew-btn"><a href="artists/new">Add new</a></button>
+
+        <script type="text/javascript">
+            
+            //id = id.length;
+            $(".delete-btn").on('click', function() {
+                $.ajax({
+                    type : 'DELETE',            // type of request
+                    url : '/artists/'+this.id,  // URL to send request to
+                    success : function(data) {  // if the request succeeds
+                        location.reload();      // reloading the page
+                    }
+                })
+            });
+        </script>
+
+    </body>
+
+</html>

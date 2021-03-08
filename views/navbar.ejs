@@ -1,0 +1,63 @@
+<html>
+
+    <head>
+        
+        <style type="text/css">
+            .dark-mode {
+                color: #eee;
+                background: #121212;
+                margin-left : 12px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .header {
+                margin : 15px 5px;
+                font-weight: bolder;
+                text-shadow : 2px 2px hsl(332, 100%, 36%);
+            }
+            .navbar {
+                height : 40px;
+                width: 300px;
+                font-size : 17px;
+                background-color: black;
+                border-radius : 10px;
+                margin-left : 5px;
+            }
+            .navbar a:hover {
+                color: white;
+            }
+            .navbar a { 
+                margin: 0px 20px 0px 10px;
+                text-decoration: none;
+                color : rgb(160, 24, 81);
+            }
+            .navbar a.active {
+                color : rgb(151, 38, 226);
+            }
+            button {
+                background-color: blue;
+                color : white;
+                border-color : rgb(151, 38, 226);
+                border-width: 4px;
+                margin-right : 10px;
+            }
+        </style>
+        
+    </head>
+
+    <body class="dark-mode">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <h1 class="header">My Music</h1>
+
+        <nav class="navbar">
+            <a href="/" class="active" id="nav-id">Home</a>
+            <a href="/albums" id="nav-id">Albums</a>
+            <a href="/artists" id="nav-id">Artists</a>
+        </nav>
+        <br/>
+
+    </body>
+
+</html>
