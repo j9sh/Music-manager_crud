@@ -1,25 +1,53 @@
 <html>
     <head>
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <title>Add new artist</title>
+        <style type="text/css">
+            .form-body {
+                color: #eee;
+                background: #121212;
+                margin-left : 12labelx;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            #cancel-btn {
+                text-decoration: none;
+                color:white;
+            }
+        </style>
     </head>
 
-    <body>
-
-        <div>
-            <% if (locals.errorMsg != null) { %>
-                <p><%=errorMsg%></p>
-            <% } %>
-        </div>
+    <body class="form-body">
         
-        <form method="POST" action="/artists/<%=artist[0]._id%>">
-            <p>Artist Name : </p>
-            <input type="text" name="name" value="<%=artist[0].name%>">
-            <p>Label Name : </p>
-            <input type="text" name="label" value="<%=artist[0].label%>">
-            <p>No of Albums : </p>
-            <input type="number" name="no_of_albums" value="<%=artist[0].no_of_albums%>">
-            <p><button type="submit">Update</button></p>
-        </form>
+        <div class="container">
+        
+            <div>
+                <% if (locals.errorMsg != null) { %>
+                    <p><%=errorMsg%></p>
+                <% } %>
+            </div>
+            
+            <h2>Update Artist</h2>
+
+            <br/>
+    
+            <form method="POST" action="/artists/<%=artist[0]._id%>">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Artist Name</label>
+                  <input type="type" class="form-control" value="<%=artist[0].name%>" aria-describedby="emailHelp" name="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Label Name</label>
+                  <input type="text" class="form-control" value="<%=artist[0].label%>" name="label" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Number of Albums</label>
+                    <input type="text" class="form-control" value="<%=artist[0].no_of_albums%>" name="no_of_albums" required>
+                  </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary"><a id="cancel-btn" href="/artists">Cancel</a></button>
+            </form>
+
+        </div>
     
     </body>
 </html>
